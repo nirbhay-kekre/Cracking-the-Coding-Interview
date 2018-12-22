@@ -1,4 +1,4 @@
-package crackingTheCodingInterview.ArraysAndStrings;
+package crackingTheCodingInterview.arraysAndStrings;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
