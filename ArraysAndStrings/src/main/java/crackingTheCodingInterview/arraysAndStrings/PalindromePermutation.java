@@ -17,7 +17,7 @@ public class PalindromePermutation {
 			if(str.charAt(i)==' ') {
 				continue;
 			}
-			//flip bit at i
+			//flip bit at char num
 			validator ^= 1<<(str.charAt(i)-'a');
 		}
 		//check if at max only one bit is set.
