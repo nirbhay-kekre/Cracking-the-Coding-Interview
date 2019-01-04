@@ -40,6 +40,7 @@ public class DeleteDupsWithBufferTest {
 		collection.add(2);
 		collection.add(2);
 		collection.add(3);
+		collection.add(3);
 		linkedList.addAll(collection);
 		
 		Collection<Integer> collectionExpected = new ArrayList<Integer>();

@@ -66,14 +66,15 @@ public class LinkedList<T> {
 		SingleNode<T> currentNode = this.head;
 		while(currentNode != null && currentNode.getNext() != null) {
 			SingleNode<T> anchor = currentNode;
-			while(anchor!=null && anchor.getNext()!=null) {
-				if(currentNode.getData().equals(anchor.getNext().getData())) {
+			while(anchor!=null) {
+				if(anchor.getNext()!=null && currentNode.getData().equals(anchor.getNext().getData())) {
 					if(anchor.getNext() == tail) {
 						tail = anchor;
 					}
 					anchor.setNext(anchor.getNext().getNext());
-				}
+				}else {
 				anchor = anchor.getNext();
+				}
 			}
 			currentNode = currentNode.getNext();
 		}
