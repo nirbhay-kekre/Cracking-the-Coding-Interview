@@ -38,6 +38,7 @@ public class DeleteDupsWithBufferTest {
 		collection.add(1);
 		collection.add(3);
 		collection.add(2);
+		collection.add(2);
 		collection.add(3);
 		linkedList.addAll(collection);
 		

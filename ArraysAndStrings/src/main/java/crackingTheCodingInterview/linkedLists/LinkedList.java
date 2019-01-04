@@ -44,15 +44,16 @@ public class LinkedList<T> {
 	public void deleteDuplicatesWithBuffer() {
 		SingleNode<T> node = this.head;
 		Set<T> set = new HashSet<T>();		
-		while(node!=null && node.getNext() != null) {
+		while(node!=null) {
 			set.add(node.getData());
-			if(set.contains(node.getNext().getData())) {
+			if(node.getNext()!=null && set.contains(node.getNext().getData())) {
 				if(node.getNext() == tail) {
 					tail = node;
 				}
 				node.setNext(node.getNext().getNext());
+			}else {
+				node = node.getNext();
 			}
-			node = node.getNext();
 		}
 	}
 
