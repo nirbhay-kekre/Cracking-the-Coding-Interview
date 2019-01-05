@@ -211,33 +211,45 @@ public class LinkedList<T extends Comparable> {
 	public SingleNode<T> getTail() {
 		return tail;
 	}
-	
-	public static LinkedList<Integer> SumList( LinkedList<Integer> first , LinkedList<Integer> second) {
+
+	/**
+	 * Solution to problem statement 2.5
+	 * 
+	 * You have two numbers represented by a linked list, where each node contains a
+	 * single digit.The digits are stored in reverse order, such that the 1 's digit
+	 * is at the head of the list. Write a function that adds the two numbers and
+	 * returns the sum as a linked list.
+	 * 
+	 * @param first - first operand
+	 * @param second - second operand
+	 * @return
+	 */
+	public static LinkedList<Integer> SumList(LinkedList<Integer> first, LinkedList<Integer> second) {
 		int rem = 0;
 		SingleNode<Integer> node = first.head, secondNode = second.head;
 		LinkedList<Integer> newList = new LinkedList<>();
-		while(node != null && secondNode!=null) {
-			Integer data = rem + node .getData() + secondNode.getData();
-			rem = data /10;
-			newList.addToTail(data%10);
+		while (node != null && secondNode != null) {
+			Integer data = rem + node.getData() + secondNode.getData();
+			rem = data / 10;
+			newList.addToTail(data % 10);
 			node = node.getNext();
 			secondNode = secondNode.getNext();
 		}
-		while(node!=null) {
-			Integer data = rem + node .getData();
-			rem = data /10;
-			newList.addToTail(data%10);
+		while (node != null) {
+			Integer data = rem + node.getData();
+			rem = data / 10;
+			newList.addToTail(data % 10);
 			node = node.getNext();
 		}
-		while(secondNode!=null) {
-			Integer data = rem + secondNode .getData();
-			rem = data /10;
-			newList.addToTail(data%10);
+		while (secondNode != null) {
+			Integer data = rem + secondNode.getData();
+			rem = data / 10;
+			newList.addToTail(data % 10);
 			secondNode = secondNode.getNext();
 		}
-		while(rem != 0) {
-			newList.addToTail(rem%10);
-			rem=rem/10;
+		while (rem != 0) {
+			newList.addToTail(rem % 10);
+			rem = rem / 10;
 		}
 		return newList;
 	}
