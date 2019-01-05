@@ -147,7 +147,7 @@ public class LinkedList<T extends Comparable> {
 	 * "right partition"; it does not need to appear between the left and right
 	 * partitions.
 	 * 
-	 * @param data: partition pivot
+	 * @param data partition pivot
 	 */
 	public void partition(T data) {
 		if (data == null) {
@@ -210,10 +210,6 @@ public class LinkedList<T extends Comparable> {
 
 	public SingleNode<T> getTail() {
 		return tail;
-	}
-	
-	public static <E> LinkedList<E> SumList() {
-		return null;
 	}
 
 	@Override
