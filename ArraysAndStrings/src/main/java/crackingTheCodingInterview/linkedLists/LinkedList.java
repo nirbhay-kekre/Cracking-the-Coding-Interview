@@ -80,6 +80,35 @@ public class LinkedList<T> {
 		}
 	}
 	
+	/**
+	 * Solution to problem statement 2.2
+	 * 
+	 * Return value at kth element from end.
+	 * 
+	 * @param k index from the end
+	 * @return Value at k-th from end
+	 */
+	public T kThFromLast(int k) {
+		if(k<=0 || head ==null) {
+			return null;
+		}
+		int length =0;
+		SingleNode<T> node = head;
+		SingleNode<T> node2 = head;
+		while(node !=null) {
+			length++;
+			if(length>k) {
+				node2 = node2.getNext();
+			}
+			node = node.getNext();
+		}
+		if(length-k <0) {
+			return null;
+		}
+
+		return node2.getData();
+	}
+	
 	public SingleNode<T> getHead() {
 		return head;
 	}
