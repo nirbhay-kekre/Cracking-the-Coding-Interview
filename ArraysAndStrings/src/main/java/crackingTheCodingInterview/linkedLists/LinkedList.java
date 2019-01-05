@@ -6,8 +6,8 @@ import java.util.Set;
 
 public class LinkedList<T extends Comparable> {
 
-	private SingleNode<T> head;
-	private SingleNode<T> tail;
+	protected SingleNode<T> head;
+	protected SingleNode<T> tail;
 
 	public void addToHead(T data) {
 		SingleNode<T> node = new SingleNode<T>(data);
@@ -147,7 +147,7 @@ public class LinkedList<T extends Comparable> {
 	 * "right partition"; it does not need to appear between the left and right
 	 * partitions.
 	 * 
-	 * @param data partition pivot
+	 * @param data: partition pivot
 	 */
 	public void partition(T data) {
 		if (data == null) {
@@ -210,6 +210,36 @@ public class LinkedList<T extends Comparable> {
 
 	public SingleNode<T> getTail() {
 		return tail;
+	}
+	
+	public static LinkedList<Integer> SumList( LinkedList<Integer> first , LinkedList<Integer> second) {
+		int rem = 0;
+		SingleNode<Integer> node = first.head, secondNode = second.head;
+		LinkedList<Integer> newList = new LinkedList<>();
+		while(node != null && secondNode!=null) {
+			Integer data = rem + node .getData() + secondNode.getData();
+			rem = data /10;
+			newList.addToTail(data%10);
+			node = node.getNext();
+			secondNode = secondNode.getNext();
+		}
+		while(node!=null) {
+			Integer data = rem + node .getData();
+			rem = data /10;
+			newList.addToTail(data%10);
+			node = node.getNext();
+		}
+		while(secondNode!=null) {
+			Integer data = rem + secondNode .getData();
+			rem = data /10;
+			newList.addToTail(data%10);
+			secondNode = secondNode.getNext();
+		}
+		while(rem != 0) {
+			newList.addToTail(rem%10);
+			rem=rem/10;
+		}
+		return newList;
 	}
 
 	@Override
