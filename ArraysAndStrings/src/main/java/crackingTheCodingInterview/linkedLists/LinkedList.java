@@ -109,6 +109,35 @@ public class LinkedList<T> {
 		return node2.getData();
 	}
 	
+	/**
+	 * Solution to problem statement 2.3
+	 * 
+	 * Remove middle element from the linked list
+	 */
+	public void deleteMiddleNode() {
+		SingleNode<T> cursor = head;
+		if(cursor == null) {
+			return;
+		}
+		if(cursor.getNext()== null) {
+			head = tail =null;
+			return;
+		}
+		if(cursor.getNext().getNext()== null) {
+			head = tail;
+			return;
+		}
+		SingleNode<T> cursor2x = head;
+		SingleNode<T> prev = null;
+		
+		while(cursor2x.getNext() != null  && cursor2x.getNext().getNext() != null) {
+			prev = cursor;
+			cursor2x = cursor2x.getNext().getNext();	
+			cursor= cursor.getNext();
+		}
+		prev.setNext(prev.getNext().getNext());
+	}
+	
 	public SingleNode<T> getHead() {
 		return head;
 	}
