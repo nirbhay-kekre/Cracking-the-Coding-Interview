@@ -3,6 +3,7 @@ package crackingTheCodingInterview.linkedLists;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.Stack;
 
 public class LinkedList<T extends Comparable> {
 
@@ -204,14 +205,6 @@ public class LinkedList<T extends Comparable> {
 		}
 	}
 
-	public SingleNode<T> getHead() {
-		return head;
-	}
-
-	public SingleNode<T> getTail() {
-		return tail;
-	}
-
 	/**
 	 * Solution to problem statement 2.5
 	 * 
@@ -253,7 +246,46 @@ public class LinkedList<T extends Comparable> {
 		}
 		return newList;
 	}
+	
+	/**
+	 * Solution to problem statement 2.6
+	 * 
+	 * Implement a function to check if a linked list is a palindrome.
+	 * 
+	 * @return true if linked list is boolean
+	 */
+	public boolean isPalindrome() {
+		if(this.head == null) {
+			return false;
+		}
+		Stack<T> stack = new Stack<>();
+		SingleNode<T> slow, fast;
+		slow = fast = this.head;
+		while(fast!=null && fast.getNext()!=null) {
+			stack.push(slow.getData());
+			slow = slow.getNext();
+			fast = fast.getNext().getNext();
+		}
+		if(fast!=null) {
+			slow = slow.getNext();
+		}
+		while(slow !=null) {
+			if(stack.pop().compareTo(slow.getData())!=0) {
+				return false;
+			}
+			slow= slow.getNext();
+		}
+		return true;
+	}
 
+	public SingleNode<T> getHead() {
+		return head;
+	}
+
+	public SingleNode<T> getTail() {
+		return tail;
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
